@@ -55,6 +55,8 @@ public class CircularBuffer<T> {
 
     @SuppressWarnings("unchecked")
     public T[] toArray() {
+        if (isEmpty())
+            throw new RuntimeException("Unable to convert empty buffer");
         T[] newArray = (T[]) newInstance(type, currentSize);
         Iterator<T> iterator = new CircularBufferIterator();
         range(0, currentSize).forEach(i -> newArray[i] = iterator.next());
@@ -69,7 +71,8 @@ public class CircularBuffer<T> {
         if (toAdd.size() > bufferSize - currentSize)
             throw new RuntimeException("There is no free space in the buffer");
         for (T element : toAdd) {
-            circularBuffer[++currentSize] = element;
+            circularBuffer[currentSize++] = element;
+            head = (head + 1) % bufferSize;
         }
     }
 
@@ -85,7 +88,7 @@ public class CircularBuffer<T> {
             Arrays.sort(sortedBuffer, 0, currentSize, comparator);
             System.arraycopy(sortedBuffer, 0, circularBuffer, 0, currentSize);
             tail = 0;
-            head = currentSize;
+            head = (head + 1) % bufferSize;
         }
     }
 
@@ -99,7 +102,7 @@ public class CircularBuffer<T> {
 
         public T next() {
             T element = circularBuffer[pointer];
-            if (tail == head)
+            if (tail > head)
                 pointer = (pointer - 1) % currentSize;
             else
                 pointer = (pointer + 1) % currentSize;
