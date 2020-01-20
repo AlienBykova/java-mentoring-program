@@ -1,5 +1,3 @@
-import java.util.regex.Pattern;
-
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static java.util.regex.Pattern.quote;
@@ -62,6 +60,8 @@ public class Calculator {
             case "/":
                 result = number1 / number2;
                 break;
+            default:
+                throw new UnsupportedOperationException("Not supported operation");
         }
         return result;
     }
