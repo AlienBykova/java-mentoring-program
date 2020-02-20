@@ -1,3 +1,7 @@
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import static java.lang.String.valueOf;
 import static java.util.Arrays.copyOf;
 
@@ -38,6 +42,5 @@ public class BruteForcer {
 
         return nextCombination;
     }
-
 
 }

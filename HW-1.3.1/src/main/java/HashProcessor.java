@@ -4,10 +4,10 @@ import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 
 public class HashProcessor implements Callable<Boolean> {
 
-    private static final String PASSWORD = "4a8a08f09d37b73795649038408b5f33";
+    private static final String PASSWORD = "4fd0101ea3d0f5abbe296ef97f47afec";
 
- //   private String letterCombination;
-
+//    private String letterCombination;
+//
 //    public HashProcessor(String letterCombination) {
 //        this.letterCombination = letterCombination;
 //    }
