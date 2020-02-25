@@ -38,10 +38,6 @@ public class Processor implements Callable<String> {
         stop = true;
     }
 
-//    public String getAnswer() {
-//        return answer;
-//    }
-
     @Override
     public String call() {
         return resolvePassword();
